@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ubuntu/contracts/contracts/alaio.msig/include/alaio.msig/alaio.msig.hpp
+alaiolib/alaio.hpp
+-
+alaiolib/ignore.hpp
+-
+alaiolib/transaction.hpp
+-
+
+/home/ubuntu/contracts/contracts/alaio.msig/src/alaio.msig.cpp
+alaio.msig/alaio.msig.hpp
+-
+alaiolib/action.hpp
+-
+alaiolib/permission.hpp
+-
+alaiolib/crypto.hpp
+-
+

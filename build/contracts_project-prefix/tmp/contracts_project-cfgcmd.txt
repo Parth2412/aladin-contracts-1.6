@@ -1,0 +1,1 @@
+cmd='/usr/bin/cmake;-DCMAKE_TOOLCHAIN_FILE=/usr/local/alaio.cdt/lib/cmake/alaio.cdt/AlaioWasmToolchain.cmake;-GUnix Makefiles;<SOURCE_DIR><SOURCE_SUBDIR>'

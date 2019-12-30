@@ -1,0 +1,1 @@
+/usr/local/alaio.cdt/bin/alaio-ld  CMakeFiles/alaio.msig.dir/src/alaio.msig.cpp.obj -o alaio.msig.wasm 

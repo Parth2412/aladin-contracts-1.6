@@ -1,0 +1,88 @@
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: /home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3dae3/fast"
+make[3]: Entering directory '/home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_3dae3.dir/build.make CMakeFiles/cmTC_3dae3.dir/build
+make[4]: Entering directory '/home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3dae3.dir/CMakeCCompilerABI.c.obj
+/usr/local/alaio.cdt/bin/alaio-cc    -o CMakeFiles/cmTC_3dae3.dir/CMakeCCompilerABI.c.obj   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_3dae3.wasm
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3dae3.dir/link.txt --verbose=1
+/usr/local/alaio.cdt/bin/alaio-ld  -v CMakeFiles/cmTC_3dae3.dir/CMakeCCompilerABI.c.obj -o cmTC_3dae3.wasm 
+alaio-ld: Unknown command line argument '-v'.  Try: '/usr/local/alaio.cdt/bin/alaio-ld -help'
+alaio-ld: Did you mean '-L'?
+CMakeFiles/cmTC_3dae3.dir/build.make:97: recipe for target 'cmTC_3dae3.wasm' failed
+make[4]: *** [cmTC_3dae3.wasm] Error 1
+make[4]: Leaving directory '/home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_3dae3/fast' failed
+make[3]: *** [cmTC_3dae3/fast] Error 2
+make[3]: Leaving directory '/home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp'
+
+
+
+Detecting C [-std=c11] compiler features failed to compile with the following output:
+Change Dir: /home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a8700/fast"
+make[3]: Entering directory '/home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_a8700.dir/build.make CMakeFiles/cmTC_a8700.dir/build
+make[4]: Entering directory '/home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a8700.dir/feature_tests.c.obj
+/usr/local/alaio.cdt/bin/alaio-cc   -std=c11 -o CMakeFiles/cmTC_a8700.dir/feature_tests.c.obj   -c /home/ubuntu/contracts/build/contracts/CMakeFiles/feature_tests.c
+alaio-cc: Unknown command line argument '-std=c11'.  Try: '/usr/local/alaio.cdt/bin/alaio-cc -help'
+alaio-cc: Did you mean '-dD=c11'?
+CMakeFiles/cmTC_a8700.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_a8700.dir/feature_tests.c.obj' failed
+make[4]: *** [CMakeFiles/cmTC_a8700.dir/feature_tests.c.obj] Error 1
+make[4]: Leaving directory '/home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_a8700/fast' failed
+make[3]: *** [cmTC_a8700/fast] Error 2
+make[3]: Leaving directory '/home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp'
+
+
+
+Detecting CXX compiler ABI info failed to compile with the following output:
+Change Dir: /home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_028b3/fast"
+make[3]: Entering directory '/home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_028b3.dir/build.make CMakeFiles/cmTC_028b3.dir/build
+make[4]: Entering directory '/home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_028b3.dir/CMakeCXXCompilerABI.cpp.obj
+/usr/local/alaio.cdt/bin/alaio-cpp     -o CMakeFiles/cmTC_028b3.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_028b3.wasm
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_028b3.dir/link.txt --verbose=1
+/usr/local/alaio.cdt/bin/alaio-ld  -v CMakeFiles/cmTC_028b3.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_028b3.wasm 
+alaio-ld: Unknown command line argument '-v'.  Try: '/usr/local/alaio.cdt/bin/alaio-ld -help'
+alaio-ld: Did you mean '-L'?
+CMakeFiles/cmTC_028b3.dir/build.make:97: recipe for target 'cmTC_028b3.wasm' failed
+make[4]: *** [cmTC_028b3.wasm] Error 1
+make[4]: Leaving directory '/home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_028b3/fast' failed
+make[3]: *** [cmTC_028b3/fast] Error 2
+make[3]: Leaving directory '/home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp'
+
+
+
+Detecting CXX [-std=c++1z] compiler features failed to compile with the following output:
+Change Dir: /home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9e86a/fast"
+make[3]: Entering directory '/home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_9e86a.dir/build.make CMakeFiles/cmTC_9e86a.dir/build
+make[4]: Entering directory '/home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_9e86a.dir/feature_tests.cxx.obj
+/usr/local/alaio.cdt/bin/alaio-cpp    -std=c++1z -o CMakeFiles/cmTC_9e86a.dir/feature_tests.cxx.obj -c /home/ubuntu/contracts/build/contracts/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_9e86a.wasm
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9e86a.dir/link.txt --verbose=1
+/usr/local/alaio.cdt/bin/alaio-ld   CMakeFiles/cmTC_9e86a.dir/feature_tests.cxx.obj -o cmTC_9e86a.wasm 
+/usr/local/alaio.cdt/bin/wasm-ld: error: undefined symbol: apply
+CMakeFiles/cmTC_9e86a.dir/build.make:97: recipe for target 'cmTC_9e86a.wasm' failed
+make[4]: *** [cmTC_9e86a.wasm] Error 255
+make[4]: Leaving directory '/home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_9e86a/fast' failed
+make[3]: *** [cmTC_9e86a/fast] Error 2
+make[3]: Leaving directory '/home/ubuntu/contracts/build/contracts/CMakeFiles/CMakeTmp'
+
+
+

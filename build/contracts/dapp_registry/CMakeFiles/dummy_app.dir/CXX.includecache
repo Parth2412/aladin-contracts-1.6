@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ubuntu/contracts/contracts/dapp_registry/include/dummy_app/dummy_app.hpp
+alaiolib/asset.hpp
+-
+alaiolib/alaio.hpp
+-
+alaiolib/singleton.hpp
+-
+alaiolib/system.hpp
+-
+alaiolib/time.hpp
+-
+
+/home/ubuntu/contracts/contracts/dapp_registry/src/dummy_app.cpp
+dummy_app/dummy_app.hpp
+-
+

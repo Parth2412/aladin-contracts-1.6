@@ -1,0 +1,1 @@
+/usr/local/alaio.cdt/bin/alaio-ld  CMakeFiles/dummy_app.dir/src/dummy_app.cpp.obj -o dummy_app.wasm 

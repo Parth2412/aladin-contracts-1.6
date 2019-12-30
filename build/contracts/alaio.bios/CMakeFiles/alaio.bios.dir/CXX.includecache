@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ubuntu/contracts/contracts/alaio.bios/include/alaio.bios/alaio.bios.hpp
+alaiolib/action.hpp
+-
+alaiolib/crypto.h
+-
+alaiolib/alaio.hpp
+-
+alaiolib/privileged.hpp
+-
+alaiolib/producer_schedule.hpp
+-
+
+/home/ubuntu/contracts/contracts/alaio.bios/src/alaio.bios.cpp
+alaio.bios/alaio.bios.hpp
+-
+

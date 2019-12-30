@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ubuntu/contracts/contracts/alaio.system/include/alaio.system/rex.results.hpp
+alaiolib/alaio.hpp
+-
+alaiolib/name.hpp
+-
+alaiolib/asset.hpp
+-
+
+/home/ubuntu/contracts/contracts/alaio.system/src/rex.results.cpp
+alaio.system/rex.results.hpp
+-
+

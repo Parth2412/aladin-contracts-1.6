@@ -1,0 +1,1 @@
+/usr/local/alaio.cdt/bin/alaio-ld  CMakeFiles/alaio.bios.dir/src/alaio.bios.cpp.obj -o alaio.bios.wasm 

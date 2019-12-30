@@ -1,0 +1,1 @@
+/usr/local/alaio.cdt/bin/alaio-ld  CMakeFiles/alaio.token.dir/src/alaio.token.cpp.obj -o alaio.token.wasm 
