@@ -1,3 +1,0 @@
-/home/ubuntu/contracts/build/CMakeFiles/rebuild_cache.dir
-/home/ubuntu/contracts/build/CMakeFiles/contracts_project.dir
-/home/ubuntu/contracts/build/CMakeFiles/edit_cache.dir

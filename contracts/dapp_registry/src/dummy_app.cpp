@@ -1,9 +1,9 @@
 #include <dummy_app/dummy_app.hpp>
 
-namespace alaio {
+namespace eosio {
 
 dummy_app::dummy_app(name s, name code, datastream<const char *> ds)
-    : alaio::contract(s, code, ds),
+    : eosio::contract(s, code, ds),
       _config_singleton(get_self(), get_self().value)
 {
     _config = _config_singleton.get_or_create(_self, configuration{});
@@ -18,15 +18,15 @@ void dummy_app::setdappsacc( const name& dapp_registry_account )
 {
     require_auth( get_self() );
 
-    check( alaio::is_account(dapp_registry_account), "account doesn`t exist" );
+    check( eosio::is_account(dapp_registry_account), "account doesn`t exist" );
     _config.dapp_registry_account = dapp_registry_account;
 }
 
-void dummy_app::transfer( const name& from, const name& to, const alaio::asset& amount, const std::string& memo )
+void dummy_app::transfer( const name& from, const name& to, const eosio::asset& amount, const std::string& memo )
 {
     check( from != get_self(), "cannot transfer from self account" );
     check( to == get_self(), "cannot transfer to other account" );
-    check( alaio::is_account(_config.dapp_registry_account), "account doesn`t exist" );
+    check( eosio::is_account(_config.dapp_registry_account), "account doesn`t exist" );
 
     require_recipient(_config.dapp_registry_account);
 }
@@ -44,7 +44,7 @@ void apply(uint64_t receiver, uint64_t code, uint64_t action) {
     {
         switch (action)
         {
-        ALAIO_DISPATCH_HELPER( dummy_app, (setdappsacc) )
+        EOSIO_DISPATCH_HELPER( dummy_app, (setdappsacc) )
         }
     }
     else if (code == token_account.value && action == transfer_action.value) {
@@ -53,4 +53,4 @@ void apply(uint64_t receiver, uint64_t code, uint64_t action) {
 }
 } /// extern "C"
 
-} /// namespace alaio
+} /// namespace eosio

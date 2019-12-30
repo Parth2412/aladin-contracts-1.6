@@ -1,36 +1,36 @@
 #pragma once
 
-#include <alaiolib/asset.hpp>
-#include <alaiolib/alaio.hpp>
-#include <alaiolib/singleton.hpp>
-#include <alaiolib/system.hpp>
-#include <alaiolib/time.hpp>
+#include <eosiolib/asset.hpp>
+#include <eosiolib/eosio.hpp>
+#include <eosiolib/singleton.hpp>
+#include <eosiolib/system.hpp>
+#include <eosiolib/time.hpp>
 
-#include <alaio.system/alaio.system.hpp>
-#include <alaio.token/alaio.token.hpp>
+#include <eosio.system/eosio.system.hpp>
+#include <eosio.token/eosio.token.hpp>
 
 #include <set>
 
 
-namespace alaio {
+namespace eosio {
 //TODO: change permission name or use active if it is OK to let this contract`s code act on behalf of dapp.owner@active
-static constexpr alaio::name dapp_owner_permission = "custom"_n;
-static constexpr alaio::name active_permission     = "active"_n;
-static constexpr alaio::name token_account         = alaiosystem::system_contract::token_account;
+static constexpr eosio::name dapp_owner_permission = "custom"_n;
+static constexpr eosio::name active_permission     = "active"_n;
+static constexpr eosio::name token_account         = eosiosystem::system_contract::token_account;
 
 
-class [[alaio::contract]] dapp_registry : public contract {
-   struct [[alaio::table("config")]] configuration {
+class [[eosio::contract]] dapp_registry : public contract {
+   struct [[eosio::table("config")]] configuration {
       double reward_rate = 1.0;
-      microseconds claim_period = alaio::days( 30 );
+      microseconds claim_period = eosio::days( 30 );
 
       int64_t total_unpaid_users = 0;
       int64_t total_unpaid_transactions = 0;
    };
-   typedef alaio::singleton< "config"_n, configuration > configuration_singleton;
+   typedef eosio::singleton< "config"_n, configuration > configuration_singleton;
 
 
-   struct [[alaio::table]] dapp_info {
+   struct [[eosio::table]] dapp_info {
       name           dapp_name;
       name           owner;
       int16_t        preference;
@@ -42,19 +42,19 @@ class [[alaio::contract]] dapp_registry : public contract {
       uint64_t primary_key() const { return dapp_name.value; }
       uint64_t by_owner() const { return owner.value; }
    };
-   typedef alaio::multi_index< "dapps"_n, dapp_info,
+   typedef eosio::multi_index< "dapps"_n, dapp_info,
       indexed_by<"owner"_n, const_mem_fun<dapp_info, uint64_t, &dapp_info::by_owner>  >
    > dapp_info_table;
 
 
-   struct [[alaio::table]] dapp_accounts_info {
+   struct [[eosio::table]] dapp_accounts_info {
       name account;
       name dapp_name;
 
       uint64_t primary_key() const { return account.value; }
       uint64_t by_dapp() const { return dapp_name.value; }
    };
-   typedef alaio::multi_index< "dappaccounts"_n, dapp_accounts_info,
+   typedef eosio::multi_index< "dappaccounts"_n, dapp_accounts_info,
       indexed_by<"dapp"_n, const_mem_fun<dapp_accounts_info, uint64_t, &dapp_accounts_info::by_dapp>  >
    > dapp_accounts_info_table;
 
@@ -67,40 +67,40 @@ public:
    dapp_registry( name s, name code, datastream<const char*> ds );
    ~dapp_registry();
 
-   [[alaio::action]]
+   [[eosio::action]]
    void add( const name& owner, const name& dapp_name, int16_t preference );
 
-   [[alaio::action]]
+   [[eosio::action]]
    void remove( const name& dapp_name );
 
-   [[alaio::action]]
+   [[eosio::action]]
    void linkacc( const name& dapp_name, const name& account );
 
-   [[alaio::action]]
+   [[eosio::action]]
    void unlinkacc( const name& account );
 
    /* 
    * This is handler for token transfers
-   * DApps must implement handler for alaio.token::transfer, too
+   * DApps must implement handler for eosio.token::transfer, too
    * and use redirect transfer to this contract`s account
    */
-   [[alaio::action]]
-   void transfer( const name& from, const name& to, const alaio::asset& amount, const std::string& memo );
+   [[eosio::action]]
+   void transfer( const name& from, const name& to, const eosio::asset& amount, const std::string& memo );
 
-   [[alaio::action]]
-   void ontransfer( const name& dapp_name, const name& user, const alaio::asset& amount );
+   [[eosio::action]]
+   void ontransfer( const name& dapp_name, const name& user, const eosio::asset& amount );
 
-   [[alaio::action]]
+   [[eosio::action]]
    void claim( const name& owner, const name& dapp_name, int64_t paid_rewards );
 
-   [[alaio::action]]
+   [[eosio::action]]
    void setrewrate( uint32_t rate );
 
-   [[alaio::action]]
+   [[eosio::action]]
    void setclaimprd( uint32_t period_in_days );
 
-   using ontransfer_action = alaio::action_wrapper<"ontransfer"_n, &dapp_registry::ontransfer>;
-   using claim_action      = alaio::action_wrapper<"claim"_n, &dapp_registry::claim>;
+   using ontransfer_action = eosio::action_wrapper<"ontransfer"_n, &dapp_registry::ontransfer>;
+   using claim_action      = eosio::action_wrapper<"claim"_n, &dapp_registry::claim>;
 
    static dapp_info get_dapp_info( name contract_account, name dapp_owner, name dapp_name )
    {
@@ -141,4 +141,4 @@ private:
    configuration           _config;
 };
 
-} /// namespace alaio
+} /// namespace eosio

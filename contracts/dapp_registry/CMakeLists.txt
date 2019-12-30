@@ -4,8 +4,8 @@ add_contract(dapp_registry dapp_registry ${CMAKE_CURRENT_SOURCE_DIR}/src/dapp_re
 target_include_directories(dapp_registry
    PUBLIC
    ${CMAKE_CURRENT_SOURCE_DIR}/include
-   ${CMAKE_CURRENT_SOURCE_DIR}/../alaio.token/include
-   ${CMAKE_CURRENT_SOURCE_DIR}/../alaio.system/include
+   ${CMAKE_CURRENT_SOURCE_DIR}/../eosio.token/include
+   ${CMAKE_CURRENT_SOURCE_DIR}/../eosio.system/include
 )
 
 set_target_properties(dapp_registry

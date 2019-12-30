@@ -1,1 +1,0 @@
-/usr/local/alaio.cdt/bin/alaio-ld  CMakeFiles/transfer_notifier.dir/src/transfer_notifier.cpp.obj -o transfer_notifier.wasm 

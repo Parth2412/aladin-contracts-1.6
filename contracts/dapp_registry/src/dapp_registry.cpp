@@ -1,15 +1,15 @@
 #include <dapp_registry/dapp_registry.hpp>
 
 
-namespace alaio {
+namespace eosio {
 
    dapp_registry::dapp_registry( name s, name code, datastream<const char*> ds )
-   : alaio::contract(s, code, ds),
+   : eosio::contract(s, code, ds),
      _config_singleton(get_self(), get_self().value)
    {
       _config = _config_singleton.get_or_create(_self, configuration{
          .reward_rate  = 1,
-         .claim_period = alaio::days( 1 )
+         .claim_period = eosio::days( 1 )
       });
    }
 
@@ -87,12 +87,12 @@ namespace alaio {
       dapp_accounts.erase( acc );
    }
 
-   void dapp_registry::transfer( const name& from, const name& to, const alaio::asset& amount, const std::string& memo )
+   void dapp_registry::transfer( const name& from, const name& to, const eosio::asset& amount, const std::string& memo )
    {
       // Skip transfers to and from this account
       // because we are tracking only transfers to DApps
       // Skip transfer from rewards account
-      if (from == get_self() || to == get_self() || from == alaiosystem::system_contract::dpay_account) {
+      if (from == get_self() || to == get_self() || from == eosiosystem::system_contract::dpay_account) {
          return;
       }
 
@@ -111,13 +111,13 @@ namespace alaio {
       ontransfer_act.send(acc_it->dapp_name, from, amount);
    }
 
-   void dapp_registry::ontransfer( const name& dapp_name, const name& user, const alaio::asset& amount )
+   void dapp_registry::ontransfer( const name& dapp_name, const name& user, const eosio::asset& amount )
    {
       dapp_info_table dapps( get_self(), get_self().value );
       const auto& dapp = dapps.get( dapp_name.value, "DApp with this name doesn`t exist" );
 
       // This action must only be executed from contract code
-      // inline actions are executed with alaio.code permission
+      // inline actions are executed with eosio.code permission
       require_auth(dapp.owner); // we need dapp owner authority in order to charge him for RAM update (tracking of unique users)
       require_auth(get_self()); // we also need this contract`s authority to be sure that this action is called by this contract
 
@@ -172,7 +172,7 @@ namespace alaio {
       require_auth( get_self() );
 
       check( period_in_days >= 0, "claim period must be positive" );
-      _config.claim_period = alaio::days( period_in_days );
+      _config.claim_period = eosio::days( period_in_days );
    }
 
    void dapp_registry::check_preference(int16_t p) const
@@ -187,7 +187,7 @@ namespace alaio {
       {
          switch (action)
          {
-            ALAIO_DISPATCH_HELPER( dapp_registry, (add)(remove)(linkacc)(unlinkacc)(ontransfer)(claim)(setrewrate)(setclaimprd) )
+            EOSIO_DISPATCH_HELPER( dapp_registry, (add)(remove)(linkacc)(unlinkacc)(ontransfer)(claim)(setrewrate)(setclaimprd) )
          }
       }
       else if (code == token_account.value && action == "transfer"_n.value) {
@@ -195,4 +195,4 @@ namespace alaio {
       }
    }
    }
-} /// namespace alaio
+} /// namespace eosio

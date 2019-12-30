@@ -1,1 +1,0 @@
-/usr/local/alaio.cdt/bin/alaio-ld  CMakeFiles/dapp_registry.dir/src/dapp_registry.cpp.obj -o dapp_registry.wasm 

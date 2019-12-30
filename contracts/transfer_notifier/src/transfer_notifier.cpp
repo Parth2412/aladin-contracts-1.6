@@ -1,10 +1,10 @@
 #include <transfer_notifier/transfer_notifier.hpp>
 
 
-namespace alaio {
+namespace eosio {
 
    transfer_notifier::transfer_notifier( name s, name code, datastream<const char*> ds )
-      : alaio::contract(s, code, ds),
+      : eosio::contract(s, code, ds),
         _config_singleton(get_self(), get_self().value)
    {
       _config = _config_singleton.get_or_create(_self, configuration{});
@@ -20,17 +20,17 @@ namespace alaio {
    {
       require_auth( get_self() );
 
-      check( alaio::is_account(dapp_registry_account), "account doesn`t exist" );
+      check( eosio::is_account(dapp_registry_account), "account doesn`t exist" );
       _config.dapp_registry_account = dapp_registry_account;
    }
 
-   void transfer_notifier::transfer( const name& from, const name& to, const alaio::asset& amount, const std::string& memo )
+   void transfer_notifier::transfer( const name& from, const name& to, const eosio::asset& amount, const std::string& memo )
    {
       check( from != get_self(), "cannot transfer from self account" );
       check( to == get_self(), "cannot transfer to other account" );
-      check( alaio::is_account(_config.dapp_registry_account), "account doesn`t exist" );
+      check( eosio::is_account(_config.dapp_registry_account), "account doesn`t exist" );
 
-      if (alaio::is_account(_config.dapp_registry_account)) {
+      if (eosio::is_account(_config.dapp_registry_account)) {
          require_recipient(_config.dapp_registry_account);
       }
    }
@@ -41,7 +41,7 @@ namespace alaio {
       {
          switch (action)
          {
-            ALAIO_DISPATCH_HELPER( transfer_notifier, (setdappsacc) )
+            EOSIO_DISPATCH_HELPER( transfer_notifier, (setdappsacc) )
          }
       }
       else if (code == token_account.value && action == transfer_action.value) {
@@ -49,4 +49,4 @@ namespace alaio {
       }
    }
    }
-} /// namespace alaio
+} /// namespace eosio

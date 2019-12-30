@@ -1,39 +1,39 @@
 #pragma once
 
-#include <alaiolib/asset.hpp>
-#include <alaiolib/alaio.hpp>
-#include <alaiolib/singleton.hpp>
-#include <alaiolib/system.hpp>
-#include <alaiolib/time.hpp>
+#include <eosiolib/asset.hpp>
+#include <eosiolib/eosio.hpp>
+#include <eosiolib/singleton.hpp>
+#include <eosiolib/system.hpp>
+#include <eosiolib/time.hpp>
 
-namespace alaio {
-static constexpr alaio::name token_account   = "alaio.token"_n;
-static constexpr alaio::name transfer_action = "transfer"_n;
+namespace eosio {
+static constexpr eosio::name token_account   = "eosio.token"_n;
+static constexpr eosio::name transfer_action = "transfer"_n;
 
-class [[alaio::contract]] dummy_app : public contract {
+class [[eosio::contract]] dummy_app : public contract {
 public:
    using contract::contract;
    
    dummy_app( name s, name code, datastream<const char*> ds );
    ~dummy_app();
 
-   [[alaio::action]]
+   [[eosio::action]]
    void setdappsacc( const name& dapp_registry_account );
 
-   [[alaio::action]]
-   void transfer( const name& from, const name& to, const alaio::asset& amount, const std::string& memo );
+   [[eosio::action]]
+   void transfer( const name& from, const name& to, const eosio::asset& amount, const std::string& memo );
 
-   [[alaio::action]]
+   [[eosio::action]]
    void greetings( name user );
 
 private:
-   struct [[alaio::table("config")]] configuration {
-      alaio::name dapp_registry_account;
+   struct [[eosio::table("config")]] configuration {
+      eosio::name dapp_registry_account;
    };
-   typedef alaio::singleton< "config"_n, configuration > configuration_singleton;
+   typedef eosio::singleton< "config"_n, configuration > configuration_singleton;
 
    configuration_singleton _config_singleton;
    configuration           _config;
 };
 
-} /// namespace alaio
+} /// namespace eosio

@@ -1,14 +1,14 @@
-#include <alaio/alaio.hpp>
+#include <eosio/eosio.hpp>
 
-using namespace alaio;
+using namespace eosio;
 
-class[[alaio::contract("domain")]] domain : public alaio::contract
+class[[eosio::contract("domain")]] domain : public eosio::contract
 {
 
 public:
 domain(name receiver, name code, datastream<const char *> ds) : contract(receiver, code, ds){}
 
-[[alaio::action]]
+[[eosio::action]]
 void upsert(name user, std::string  account_id, std::string bns_name, std::string zone_hash, std::string zone_file,std::string isExpired){
 require_auth(user);
 address_index addresses(get_self(), get_first_receiver().value);
@@ -37,7 +37,7 @@ row.isExpired = isExpired;
 }
 }
 
-[[alaio::action]]
+[[eosio::action]]
 void erase(name user) {
 require_auth(user);
 
@@ -48,7 +48,7 @@ check(iterator != addresses.end(), "Record does not exist");
 addresses.erase(iterator);
 }
 
-[[alaio::action]]
+[[eosio::action]]
 void fetch(name user) {
 require_auth(user);
 
@@ -67,7 +67,7 @@ print(p.isExpired);
 
 
 private : 
-struct [[alaio::table]] person {
+struct [[eosio::table]] person {
 name key;
 std::string account_id;
 std::string bns_name;
@@ -76,5 +76,5 @@ std::string zone_file;
 std::string isExpired;
 uint64_t primary_key() const { return key.value; }
 };
-typedef alaio::multi_index<"people"_n, person> address_index;
+typedef eosio::multi_index<"people"_n, person> address_index;
 };
